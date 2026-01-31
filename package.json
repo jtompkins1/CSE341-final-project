@@ -1,14 +1,14 @@
 {
-  "name": "cse341-project2",
+  "name": "cse341-final-project",
   "version": "1.0.0",
-  "description": "CSE341-project2",
-  "homepage": "https://github.com/jtompkins1/CSE341-project2#readme",
+  "description": "CSE341-final-project",
+  "homepage": "https://github.com/jtompkins1/CSE341-final-project#readme",
   "bugs": {
-    "url": "https://github.com/jtompkins1/CSE341-project2/issues"
+    "url": "https://github.com/jtompkins1/CSE341-final-project/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jtompkins1/CSE341-project2.git"
+    "url": "git+https://github.com/jtompkins1/CSE341-final-project.git"
   },
   "license": "ISC",
   "author": "Jennifer Tompkins",
