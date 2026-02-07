@@ -1,16 +1,15 @@
 const studentsController = require('../controllers/studentsController');
 const router = require('express').Router();
 
+router.use('/', require('./swagger'));
 
 router.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-
-
-// BRANDON's EXAMPLE ROUTE TO DEMONSTRATE 
-// THAT THE MONGODB DATABASE IS CONNECTED:
-
-router.get('/students', studentsController.getAllStudents);
+router.use('/teachers', require('./teachers'));
+router.use('/students', require('./students'));
+// router.use('/', require('./'));
+// router.use('/', require('./'));
 
 module.exports = router;

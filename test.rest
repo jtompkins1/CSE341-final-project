@@ -2,3 +2,91 @@
 
 ### test for local deployment
 GET {{baseurl}}
+
+### Get All teachers
+GET http://localhost:3000/teachers
+
+### Get One by Id teachers
+GET http://localhost:3000/teachers/697e5f63724f89bc4789c9b0
+
+
+### Get One by classtaught teachers
+GET http://localhost:3000/teachers/classtaught/English Composition
+
+### Get One by subject teachers
+GET http://localhost:3000/teachers/subject/English 
+
+### Create a new one teachers
+POST http://localhost:3000/teachers/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Cortez",
+    "lastName": "Hernan",
+    "dateOfBirth": "12-9-1973",
+    "classTaught": "Educacion Fisica",
+    "email": "cortez.alo@asde.com", 
+    "phone": "1-234-567-8910",  
+    "subject": "Salud Fisica"
+}
+
+### Modifiy One teachers
+PUT http://localhost:3000/teachers/6985574fbf782648e77d2f68 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Cortez",
+    "lastName": "Hernan",
+    "dateOfBirth": "12-9-1973",
+    "classTaught": "English Composition",
+    "email": "cortez.alo@asde.com", 
+    "phone": "1-234-567-8910",  
+    "subject": "English"
+}
+
+### Delet One teachers
+DELETE http://localhost:3000/teachers/6985584bbf782648e77d2f69
+
+
+
+### Get All students
+GET http://localhost:3000/students
+
+### Get One by Id student
+GET http://localhost:3000/students/697e5610724f89bc4789c99d
+
+### Get One by degree student
+GET http://localhost:3000/students/degree/Business Management
+
+### Get One by class student
+GET http://localhost:3000/students/class/Mathmatics 
+
+### Create a new student
+POST http://localhost:3000/students/ HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "firstName": "Ernesto",
+    "lastName": "Cruz",
+    "phone": "1-234-567-8910",  
+    "email": "ernetcruz.coco@etsr.com", 
+    "degree": "History", 
+    "class": "Hystory"
+}
+
+### Modifiy One student
+PUT http://localhost:3000/students/69857cc2e02060cbd915827a HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Ernesto",
+    "lastName": "Cruz",
+    "phone": "1-234-567-8910",  
+    "email": "ernetcruz.coco@etsr.com", 
+    "degree": "Business Management", 
+    "class": "Mathmatics"
+}
+
+### Delet One student
+DELETE http://localhost:3000/students/697e5fc1724f89bc4789c9b4
