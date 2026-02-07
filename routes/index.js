@@ -1,3 +1,4 @@
+const studentsController = require('../controllers/studentsController');
 const router = require('express').Router();
 
 router.use('/', require('./swagger'));
