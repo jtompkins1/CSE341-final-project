@@ -19,5 +19,9 @@ router.get('/logout', function(req, res, next) {
 
 router.use('/teachers', require('./teachers'));
 router.use('/students', require('./students'));
+router.use('/degrees', require('./degrees'));
+router.use('/classes', require('./classes'));
+// router.use('/', require('./'));
+// router.use('/', require('./'));
 
 module.exports = router;

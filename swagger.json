@@ -5,9 +5,14 @@
     "description": "API for the Final Project",
     "version": "1.0.0"
   },
-  "host": "cse341-final-project-n22h.onrender.com",
+  "host": "localhost:3000",
+  "x-servers": [
+    { "url": "http://localhost:3000", "description": "Local development server" },
+    { "url": "https://cse341-final-project-n22h.onrender.com", "description": "Production server" }
+  ],
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
@@ -509,6 +514,203 @@
           }
         }
       }
+    },
+    "/degrees/": {
+      "get": {
+        "tags": ["Degree"],
+        "description": "Retrieve a list of all degrees.",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A list of degree objects.",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/Degree" }
+            }
+          },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "post": {
+        "tags": ["Degree"],
+        "description": "Create a new degree.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/DegreeInput" }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Degree created successfully." },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/degrees/{id}": {
+      "get": {
+        "tags": ["Degree"],
+        "description": "Retrieve a specific degree by its ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "Degree object returned.", "schema": { "$ref": "#/definitions/Degree" } },
+          "404": { "description": "Degree not found." },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "put": {
+        "tags": ["Degree"],
+        "description": "Update a specific degree by its ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" },
+          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/definitions/DegreeInput" } }
+        ],
+        "responses": {
+          "200": { "description": "Degree updated successfully." },
+          "404": { "description": "Degree not found or not updated." },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "delete": {
+        "tags": ["Degree"],
+        "description": "Delete a specific degree by its ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "Degree deleted successfully." },
+          "404": { "description": "Degree not found." },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/classes/": {
+      "get": {
+        "tags": ["Class"],
+        "description": "Retrieve a list of all classes.",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A list of class objects.",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/Class" }
+            }
+          },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "post": {
+        "tags": ["Class"],
+        "description": "Create a new class.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/ClassInput" }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Class created successfully." },
+          "400": { "description": "Bad Request" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/classes/{id}": {
+      "get": {
+        "tags": ["Class"],
+        "description": "Retrieve a specific class by its ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "Class object returned.", "schema": { "$ref": "#/definitions/Class" } },
+          "404": { "description": "Class not found." },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "put": {
+        "tags": ["Class"],
+        "description": "Update a specific class by its ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" },
+          { "name": "body", "in": "body", "required": true, "schema": { "$ref": "#/definitions/ClassInput" } }
+        ],
+        "responses": {
+          "200": { "description": "Class updated successfully." },
+          "404": { "description": "Class not found or not updated." },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "delete": {
+        "tags": ["Class"],
+        "description": "Delete a specific class by its ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "Class deleted successfully." },
+          "404": { "description": "Class not found." },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Degree": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string", "example": "60d5ec49f1d2c916c8a7b91a" },
+        "name": { "type": "string", "example": "Software Development" },
+        "code": { "type": "string", "example": "BS" },
+        "requiredCredits": { "type": "string", "example": "120" }
+      }
+    },
+    "DegreeInput": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "example": "Software Development" },
+        "code": { "type": "string", "example": "BS" },
+        "requiredCredits": { "type": "string", "example": "120" }
+      },
+      "required": ["name", "code", "requiredCredits"]
+    },
+    "Class": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string", "example": "697e56be724f89bc4789c9a1" },
+        "name": { "type": "string", "example": "Web Services" },
+        "code": { "type": "string", "example": "CSE" },
+        "number": { "type": "string", "example": "341" },
+        "credits": { "type": "string", "example": "3" }
+      }
+    },
+    "ClassInput": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "example": "Web Services" },
+        "code": { "type": "string", "example": "CSE" },
+        "number": { "type": "string", "example": "341" },
+        "credits": { "type": "string", "example": "3" }
+      },
+      "required": ["name", "code", "number", "credits"]
     }
   }
 }
+  
