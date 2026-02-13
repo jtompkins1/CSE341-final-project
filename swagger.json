@@ -5,14 +5,13 @@
     "description": "API for the Final Project",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-final-project-n22h.onrender.com",
   "x-servers": [
     { "url": "http://localhost:3000", "description": "Local development server" },
     { "url": "https://cse341-final-project-n22h.onrender.com", "description": "Production server" }
   ],
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
