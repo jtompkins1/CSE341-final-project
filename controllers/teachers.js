@@ -7,7 +7,7 @@ const getAll = async (req,res) => {
         if (!result){
             return res.status(400).json({error: 'Error', message: 'Sorry No Content',});
         }
-        result.toArray().then((teachers) => {
+        await result.toArray().then((teachers) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(teachers)
         });
