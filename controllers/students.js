@@ -8,7 +8,7 @@ const getAll = async (req, res) => {
         if (!result){
                 return res.status(400).json({error: 'Error', message: 'Sorry No Content',});
             }
-            result.toArray().then((products) => {
+            await result.toArray().then((products) => {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json(products)
             });
@@ -24,7 +24,7 @@ const getSingle = async (req, res) => {
     const studentsId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('student').findOne({ _id: studentsId }); 
     if (!result){
-            return res.status(400).json({error: 'Error', message: 'The ID dont mach whit any of the Students, try anoter id',});
+            return res.status(404).json({error: 'Error', message: 'The ID dont mach whit any of the Students, try anoter id',});
         }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(result);

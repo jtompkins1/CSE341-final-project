@@ -8,7 +8,7 @@ const getAllDegrees = async (req, res) => {
         if (!result) {
             return res.status(400).json({ error: 'Error', message: 'No degrees found.' });
         }
-        result.toArray().then((degrees) => {
+        await result.toArray().then((degrees) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(degrees);
         });
