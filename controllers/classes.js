@@ -8,10 +8,11 @@ const getAllClasses = async (req, res) => {
         if (!result) {
             return res.status(400).json({ error: 'Error', message: 'No classes found.' });
         }
-        result.toArray().then((classes) => {
-            res.setHeader('Content-Type', 'application/json');
-            res.status(200).json(classes);
-        });
+        //result.toArray().then((classes) => {
+        const classes = await result.toArray(); 
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(classes);
+       // });
     } catch (err) {
         res.setHeader('Content-Type', 'application/json');
         res.status(500).json({ error: 'Error', message: err.message });
@@ -24,9 +25,10 @@ const getClassById = async (req, res) => {
         const classId = new ObjectId(req.params.id);
         const result = await mongodb.getDatabase().db().collection('class').findOne({ _id: classId });
         if (!result) {
+            res.setHeader('Content-Type', 'application/json');
             return res.status(404).json({ error: 'Error', message: 'Class not found.' });
         }
-        res.setHeader('Content-Type', 'application/json');
+
         res.status(200).json(result);
     } catch (err) {
         res.setHeader('Content-Type', 'application/json');

@@ -4,7 +4,8 @@ const passport = require('passport');
 router.use('/', require('./swagger'));
 
 router.get('/', (req, res) => {
-    res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out");
+    //res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out");
+    res.send(req.session.user !== undefined ? `Logged in` : "Logged Out");
 });
 
 // Login & Logout
