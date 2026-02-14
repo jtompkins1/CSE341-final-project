@@ -10,7 +10,12 @@ const initDb = (callback) => {
     console.log('Database is already initialized!');
     return callback(null, database);
   }
+
+  //for testing with Jest and mongodb-memory-server
+  const uri = global.__MONGO_URI__ || process.env.MONGODB_URL;
+
   MongoClient.connect(process.env.MONGODB_URL)
+  MongoClient.connect(uri)
     .then((client) => {
         database = client;
         callback(null, database);
